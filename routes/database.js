@@ -10,30 +10,38 @@ var connection = mysql.createConnection({
    database : 'events'
  });
 
-// mysql database setup
-connection.connect(function(err){
-	if(!err) {
-		console.log("Database is connected ... \n\n");  
-	} else {
-		console.log("Error connecting database ... \n\n");  
-	}
+var db = require('mysql-promise')();
+
+db.configure({
+	"host": "localhost",
+	"user": "root",
+	"password": config.mySQLPassword,
+	"database": "events"
 });
 
-/* GET users listing. */
-router.get('/test', function(req, res, next) {
-	// test query
-	connection.query('SELECT * from potluck LIMIT 2', function(err, rows, fields) {
-	connection.end();
-	if (!err){
-	 console.log('The solution is: ', rows);
-	 res.send(rows);
-	}
-	else
-	{
-	 console.log('Error while performing Query.');
-	 res.status(400).send({Error:'error while performing query'});
-		}
-  	});
-});
+exports.getPersons = function(){
+	console.log('db.getPersons');
+ return db.query('SELECT * from potluck LIMIT 2');
+	
+};
 
-module.exports = router;
+
+
+// /* GET users listing via REST. */
+// router.get('/test', function(req, res, next) {
+// 	// test query
+// 	connection.query('SELECT * from potluck LIMIT 2', function(err, rows, fields) {
+// 	connection.end();
+// 	if (!err){
+// 	 console.log('The solution is: ', rows);
+// 	 res.send(rows);
+// 	}
+// 	else
+// 	{
+// 	 console.log('Error while performing Query.');
+// 	 res.status(400).send({Error:'error while performing query'});
+// 		}
+//   	});
+// });
+
+// module.exports = router;

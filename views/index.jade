@@ -3,3 +3,17 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p Some data:
+  
+  table
+    thead
+      td id
+      td name
+      td food
+    tbody
+      for row in data
+        tr
+          -for(var prop in row)
+            td #{row[prop]}
+
+    
