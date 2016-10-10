@@ -1,3 +1,4 @@
 {
-  "mySQLPassword":"myPassword"
+  "mySQLPassword":"myPassword",
+  "geoAPIKey": "myGeoAPIKey"
 }

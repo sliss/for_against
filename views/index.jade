@@ -3,6 +3,15 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  div
+    form(action='/lookup',method='post')
+      div(data-role='fieldcontain')
+        fieldset(data-role='controlgroup')
+          label(for='address') address
+             input(id='address',type='text',value='',placeholder='123 Main St. Boston, MA 02138',name='address')
+      input(type='submit',value='Look Up',data-transition='fade', data-theme='c')
+
   p Some data:
   
   table

@@ -15,6 +15,7 @@ var connection = mysql.createConnection({
  });
 
 var routes = require('./routes/index');
+var lookup = require('./routes/lookup');
 var database = require('./routes/database');
 
 var app = express();
@@ -32,7 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/lookup', lookup);
 app.use('/', routes);
+
 // app.use('/database', database);
 
 // catch 404 and forward to error handler
