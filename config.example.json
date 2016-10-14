@@ -1,4 +1,5 @@
 {
+  "mySQLDatabase": "mySQLDatabaseName",
   "mySQLPassword":"myPassword",
   "geoAPIKey": "myGeoAPIKey"
 }
