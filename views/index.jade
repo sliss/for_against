@@ -1,16 +1,19 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to "#{title}"
-  p Enter your address to lookup the candidates on your ballot and see where they stand on Trump.
+  div.text-center
+    h1= title
 
-  div
-    form(action='/lookup',method='post')
-      div(data-role='fieldcontain')
-        fieldset(data-role='controlgroup')
-          label(for='address') Address
-             input(id='address',type='text',value='',placeholder='123 Main St. Boston, MA 02138',name='address')
-      input(type='submit',value='Look Up',data-transition='fade', data-theme='c')
+    div.row
+      div.col-md-1
+        div.center-block
+          p Enter your address to lookup the candidates on your ballot and see where they stand on Trump.
 
-    
+          form(action='/lookup',method='post')
+            div(data-role='fieldcontain')
+              fieldset(data-role='controlgroup')
+                label(for='address') Address
+                   input(id='address',type='text',value='',placeholder='123 Main St. Boston, MA 02138',name='address')
+            input(type='submit',value='Look Up',data-transition='fade', data-theme='c')
+
+        

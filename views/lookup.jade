@@ -4,15 +4,16 @@ block content
   h1= title
   p Here are your candidates for congress:
 
-  table
+  table(class="table table-hover")
     thead
       td Name
       td Office
       td Party
       td Endorses Trump?
-      td Facebook
       td Support
       td Oppose
+      td Share
+
     tbody
       -for row in data
         tr
@@ -22,7 +23,22 @@ block content
           td #{row['party']}
           td 
             a(href=row['source_link'] target="_blank") #{row['supports_trump']}
-          //- td #{row['facebook']}
+          td 
+            a.twitter-share-button(
+              href='https://twitter.com/share', 
+              data-size='large', 
+              data-related='twitterapi,twitter',
+              data-hashtags='whoswithtrump', 
+              data-text='@'+row['twitter']+' '+row['agree_message'])
+              | Support
+          td 
+            a.twitter-share-button(
+              href='https://twitter.com/share', 
+              data-size='large', 
+              data-related='twitterapi,twitter',
+              data-hashtags='whoswithtrump', 
+              data-text='@'+row['twitter']+' '+row['disagree_message'])
+              | Oppose
           td
             .fb-share-button(
               data-href='http://whoswithtrump.com', 
@@ -33,22 +49,4 @@ block content
               data-description='Enter your address to look up the candidates on your local ballot.')
             //- a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwhoswithtrump.com%2F&src=sdkpreparse') Share
 
-          td 
-            a.twitter-share-button(
-              href='https://twitter.com/share', 
-              data-size='large', 
-              data-via='whoswithtrump', 
-              data-related='twitterapi,twitter',
-              data-hashtags='whoswithtrump', 
-              data-text='@'+row['twitter']+row['agree_message'])
-              | Support
-          td 
-            a.twitter-share-button(
-              href='https://twitter.com/share', 
-              data-size='large', 
-              data-via='whoswithtrump', 
-              data-related='twitterapi,twitter',
-              data-hashtags='whoswithtrump', 
-              data-text='@'+row['twitter']+row['disagree_message'])
-              | Oppose
 
