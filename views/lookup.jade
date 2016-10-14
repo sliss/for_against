@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1= title
+  p Here are your candidates for congress:
+
+  table
+    thead
+      td Name
+      td Office
+      td Party
+      td Endorses Trump?
+      td Facebook
+      td Support
+      td Oppose
+    tbody
+      -for row in data
+        tr
+          td 
+            a(href=row['campaign_link'] target="_blank") #{row['name']}
+          td #{row['office']}
+          td #{row['party']}
+          td 
+            a(href=row['source_link'] target="_blank") #{row['supports_trump']}
+          //- td #{row['facebook']}
+          td
+            .fb-share-button(
+              data-href='http://whoswithtrump.com', 
+              data-layout='button_count', 
+              data-size='small', 
+              data-mobile-iframe='true',
+              data-caption='See where your candidates stand on Trump',
+              data-description='Enter your address to look up the candidates on your local ballot.')
+            //- a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwhoswithtrump.com%2F&src=sdkpreparse') Share
+
+          td 
+            a.twitter-share-button(
+              href='https://twitter.com/share', 
+              data-size='large', 
+              data-via='whoswithtrump', 
+              data-related='twitterapi,twitter',
+              data-hashtags='whoswithtrump', 
+              data-text='@'+row['twitter']+row['agree_message'])
+              | Support
+          td 
+            a.twitter-share-button(
+              href='https://twitter.com/share', 
+              data-size='large', 
+              data-via='whoswithtrump', 
+              data-related='twitterapi,twitter',
+              data-hashtags='whoswithtrump', 
+              data-text='@'+row['twitter']+row['disagree_message'])
+              | Oppose
+

@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 	db.getCandidates('pa', 15)
 	.spread(function (rows) {
 		 res.render('index', 
-		 	{ title: 'For Against',
+		 	{ title: 'Who\'s with Trump?',
 		 	data: rows });
 	});
 });

@@ -1,7 +1,14 @@
 doctype html
 html
   head
+    meta(property='og:title', content="Who's with Trump?")
+    meta(property='og:description', content='See where the candidates on your ballot stand on Trump.')
+    meta(property='fb:app_id', content='1550896891603033')
+
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
+    script(src="/javascripts/twitter.js")
+    script(src="/javascripts/fb-sdk.js")
+    script(src="/javascripts/google-analytics.js")
