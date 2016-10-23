@@ -2,53 +2,97 @@ extends layout
 
 block content
   h1= title
-  p Here are your candidates for congress:
+  p If you approve or disapprove of a candidate's stance on Trump, tweet at them to let them know!
 
-  table(class="table table-hover")
-    thead
-      td Name
-      td Office
-      td Party
-      td Endorses Trump?
-      td Support
-      td Oppose
-      td Share
-
-    tbody
-      -for row in data
-        tr
-          td 
-            a(href=row['campaign_link'] target="_blank") #{row['name']}
-          td #{row['office']}
-          td #{row['party']}
-          td 
-            a(href=row['source_link'] target="_blank") #{row['supports_trump']}
-          td 
-            a.twitter-share-button(
-              href='https://twitter.com/share', 
-              data-size='large', 
-              data-related='twitterapi,twitter',
-              data-hashtags='whoswithtrump', 
-              data-text='@'+row['twitter']+' '+row['agree_message'])
-              | Support
-          td 
-            a.twitter-share-button(
-              href='https://twitter.com/share', 
-              data-size='large', 
-              data-related='twitterapi,twitter',
-              data-hashtags='whoswithtrump', 
-              data-text='@'+row['twitter']+' '+row['disagree_message'])
-              | Oppose
-          td
-            .fb-share-button(
-              data-href='http://whoswithtrump.com', 
-              data-layout='button_count', 
-              data-size='small', 
-              data-mobile-iframe='true',
-              data-caption='See where your candidates stand on Trump',
-              data-description='Enter your address to look up the candidates on your local ballot.')
-            //- a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwhoswithtrump.com%2F&src=sdkpreparse') Share
-
+  if senate.length>0
+    div.row
+      h2 U.S. Senate
+      table(class="table table-hover")
+      thead
+        td Name
+        td Party
+        td Endorses Trump?
+        td Support
+        td Oppose
+        td Share
+      tbody
+        -for row in senate
+          tr
+            td 
+              a(href=row['campaign_link'] target="_blank") #{row['name']}
+            td #{row['party']}
+            td 
+              a(href=row['source_link'] target="_blank") #{row['supports_trump']}
+            td 
+              a.twitter-share-button(
+                href='https://twitter.com/share', 
+                data-size='large', 
+                data-hashtags='whoswithtrump', 
+                data-text='@'+row['twitter']+' '+row['agree_message'])
+                | Support
+            td 
+              a.twitter-share-button(
+                href='https://twitter.com/share', 
+                data-size='large', 
+                data-hashtags='whoswithtrump', 
+                data-text='@'+row['twitter']+' '+row['disagree_message'])
+                | Oppose
+            td
+              .fb-share-button(
+                data-href='http://whoswithtrump.com', 
+                data-layout='button_count', 
+                data-size='small', 
+                data-mobile-iframe='true',
+                data-caption='See where your candidates stand on Trump',
+                data-description='Enter your address to look up the candidates on your local ballot.')
+              //- a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwhoswithtrump.com%2F&src=sdkpreparse') Share
+  div.row
+    table(class="table table-hover")
+      thead
+        td Name
+        td Party
+        td Endorses Trump?
+        td Support
+        td Oppose
+        td Share  
+      tbody
+        h2 House of Representatives
+        -for row in house
+          tr
+            td 
+              a(href=row['campaign_link'] target="_blank") #{row['name']}
+            td #{row['party']}
+            td 
+              a(href=row['source_link'] target="_blank") #{row['supports_trump']}
+            td 
+              a.twitter-share-button(
+                href='https://twitter.com/share', 
+                data-size='large', 
+                data-related='twitterapi,twitter',
+                data-hashtags='whoswithtrump', 
+                data-text='@'+row['twitter']+' '+row['agree_message'])
+                | Support
+            td 
+              a.twitter-share-button(
+                href='https://twitter.com/share', 
+                data-size='large', 
+                data-related='twitterapi,twitter',
+                data-hashtags='whoswithtrump', 
+                data-text='@'+row['twitter']+' '+row['disagree_message'])
+                | Oppose
+            td
+              .fb-share-button(
+                data-href='http://whoswithtrump.com', 
+                data-layout='button_count', 
+                data-size='small', 
+                data-mobile-iframe='true',
+                data-caption='See where your candidates stand on Trump',
+                data-description='Enter your address to look up the candidates on your local ballot.')
+              //- a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwhoswithtrump.com%2F&src=sdkpreparse') Share
+  p Candidates' stances are linked to news sources where available.  If you find a candidate's listing is inaccurate, email a link to a source confirming the correct stance to
+    a(href='mailto:whoswithtrump@gmail.com?Subject=Correction')
+      |&nbsp;whoswithtrump@gmail.com
+      
   div.row.text-center.tarrow
     a(href='/')
       img(src="images/tarrow-crop.svg")

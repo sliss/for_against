@@ -36,29 +36,43 @@ router.post('/', function(req, res, next) {
 			.spread(function (rows) {
 				if(rows && rows.length > 0){
 					console.log(rows);
+					house = [],
+					senate = [];
 
 					// process rows
 					for(var i = 0; i < rows.length; i++){
 						if(rows[i].supports_trump === 1){
-							rows[i].supports_trump = 'Yes';
+							rows[i].supports_trump = 'YES';
 							rows[i].agree_message = 'Thank you for standing with Trump.';
 							rows[i].disagree_message = 'Please stand up against Trump!';
 						}
 						else if(rows[i].supports_trump === 0){
-							rows[i].supports_trump = 'No';
+							rows[i].supports_trump = 'NO';
 							rows[i].agree_message = 'Thank you for standing against Trump!';
 							rows[i].disagree_message = 'Please stand with Trump.';
 						}
 						else {
-							rows[i].supports_trump = 'Unknown';
+							rows[i].supports_trump = 'UNKNOWN';
 							rows[i].agree_message = 'We deserve to know where you stand with Trump!';
 							rows[i].disagree_message = 'We deserve to know where you stand with Trump!';
 						}
+
+						// assign candidate to senate or house list
+						if(rows[i].office.indexOf('house')>-1){
+							house.push(rows[i]);
+						}
+						else {
+							if(rows[i].offic.indexOf('senate')>-1){
+								senate.push(rows[i]);
+							}
+						}
 					}
+					console.log('house:', house);
 					res.render('lookup', 
 				 	{ 
-				 		title: 'Ballot for ' + state.toUpperCase() + ' ' + 'District ' + districtNumber,
-				 		data: rows 
+				 		title: 'Congressional ballot for ' + state.toUpperCase() + ' ' + 'District ' + districtNumber,
+				 		house: house,
+				 		senate: senate
 				 	});
 				}
 				else {
@@ -67,7 +81,8 @@ router.post('/', function(req, res, next) {
 					res.render('lookup', 
 				 	{ 
 				 		title: 'Sorry- no candidates found for that address',
-				 		data: rows 
+				 		house: house,
+				 		senate: senate
 				 	});
 				}
 				

@@ -8,7 +8,8 @@ block content
 
     div.row
       div.center-block
-        p See where your congressional candidates stand on Trump.  Enter your address check your ballot.
+        p See where your congressional candidates stand on Trump and let them know what you think!
+        p Enter your address look up your ballot.
 
         form(action='/lookup',method='post')
           div(data-role='fieldcontain')
@@ -16,5 +17,6 @@ block content
               label(for='address') Address:&nbsp;
                  input(id='address',type='text',value='',placeholder='123 Main St. Boston, MA 02138',name='address')
           input(type='submit',value='Look Up',data-transition='fade', data-theme='c')
-
-        
+    br
+    div.row
+      a.twitter-timeline(href='https://twitter.com/hashtag/whoswithtrump', data-widget-id='790034887650775041') #WhosWithTrump Tweets
