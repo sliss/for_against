@@ -34,27 +34,38 @@ router.post('/', function(req, res, next) {
 	        // refactor promise chain later
 	        db.getCandidates(state, districtNumber)
 			.spread(function (rows) {
+				house = [],
+				senate = [];
+				
 				if(rows && rows.length > 0){
 					console.log(rows);
-					house = [],
-					senate = [];
 
 					// process rows
 					for(var i = 0; i < rows.length; i++){
+						//prepend twitter messages
+						var twitterHeader;
+						if(rows[i].twitter && rows[i].twitter.length > 0){
+							twitterHeader = '@' + rows[i].twitter + ' ';
+						}
+						else {
+							twitterHeader = rows[i].name + '- ';
+						}
+
+						// generate default tweets
 						if(rows[i].supports_trump === 1){
 							rows[i].supports_trump = 'YES';
-							rows[i].agree_message = 'Thank you for standing with Trump.';
-							rows[i].disagree_message = 'Please stand up against Trump!';
+							rows[i].agree_message = twitterHeader + 'Thank you for standing with Trump.';
+							rows[i].disagree_message = twitterHeader + 'Please stand up against Trump!';
 						}
 						else if(rows[i].supports_trump === 0){
 							rows[i].supports_trump = 'NO';
-							rows[i].agree_message = 'Thank you for standing against Trump!';
-							rows[i].disagree_message = 'Please stand with Trump.';
+							rows[i].agree_message = twitterHeader + 'Thank you for standing against Trump!';
+							rows[i].disagree_message = twitterHeader + 'Please stand with Trump.';
 						}
 						else {
 							rows[i].supports_trump = 'UNKNOWN';
-							rows[i].agree_message = 'We deserve to know where you stand with Trump!';
-							rows[i].disagree_message = 'We deserve to know where you stand with Trump!';
+							rows[i].agree_message = twitterHeader + 'We deserve to know where you stand with Trump!';
+							rows[i].disagree_message = twitterHeader + 'We deserve to know where you stand with Trump!';
 						}
 
 						// assign candidate to senate or house list
@@ -68,9 +79,14 @@ router.post('/', function(req, res, next) {
 						}
 					}
 					console.log('house:', house);
+					// handle 'district 0' for at-large states
+					var districtLabel = ' District ' + districtNumber;
+					if(districtNumber == 0){
+						districtLabel = ''
+					}
 					res.render('lookup', 
 				 	{ 
-				 		title: 'Congressional ballot for ' + state.toUpperCase() + ' ' + 'District ' + districtNumber,
+				 		title: 'Congressional ballot for ' + state.toUpperCase() + districtLabel,
 				 		house: house,
 				 		senate: senate
 				 	});
