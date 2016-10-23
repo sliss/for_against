@@ -1,8 +1,31 @@
 body {
+  background:#005fbf;
+  background-size: 400px;
+  background-repeat: no-repeat;
+  background-position:center 90%;
+  background-attachment: fixed;
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: 'Lato', sans-serif;
+  color: white;
 }
 
 a {
-  color: #00B7FF;
+  color: #4EA5D9;
+}
+
+a:hover {
+  color: #44CFCB;
+}
+
+input {
+  color:#333333;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #224870;
+}
+
+.tarrow {
+  size: 60%;
 }

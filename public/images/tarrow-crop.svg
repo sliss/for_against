@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="367.2248840332031" height="321.615478515625" viewBox="100.935 34.3845 367.225 321.615" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, 1, 0, 0)">
+    <title>Layer 1</title>
+    <rect stroke="null" fill="#ffffff" stroke-width="0" x="236.5" y="161.999998" width="100.000008" height="194.000005" id="svg_2"/>
+    <rect stroke="null" id="svg_18" height="84.155" width="329" y="79.845" x="120" stroke-width="0" fill="#ff0000"/>
+    <path stroke="#000000" fill="#ffffff" stroke-width="0" stroke-opacity="0" d="m291.470282,121.090264l86.53331,-89.817211l86.533322,89.817211l-43.266666,0l0,90.24939l-86.533311,0l0,-90.24939l-43.266654,0z" id="svg_19" transform="rotate(90.08126831054688 378.00360107421875,121.30635070800778) "/>
+    <ellipse id="svg_10" cy="67" cx="391" stroke-opacity="0" stroke-width="0" stroke="#000000" fill="#ffffff"/>
+    <path stroke="#000000" fill="#ffffff" stroke-width="0" stroke-opacity="0" d="m108.979868,121.278447l86.53331,94.229162l86.533322,-94.229162l-43.266666,0l0,-94.682568l-86.533311,0l0,94.682568l-43.266655,0z" id="svg_21" transform="rotate(90.08126831054688 195.51318359374997,121.05174255371094) "/>
+  </g>
+</svg>
