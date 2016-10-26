@@ -13,18 +13,26 @@ db.configure({
 	"database": config.mySQLDatabase
 });
 
+exports.logQuery = function(state, district){
+	var district_key = state + district.toString();
+	console.log('db.logQuery:', district_key);
+
+	 return db.query(
+	 	'INSERT into tally VALUES(\'' + district_key + '\', 1) ON DUPLICATE KEY ' +
+	 	'UPDATE count = count + 1;'
+	 );
+};
+
 exports.getCandidates = function(state, district){
-	console.log('db.getCandidates:', state, district);
- return db.query('SELECT * from candidates WHERE state = \'' 
- 	+ state + '\''
- 	+ ' AND district = ' 
- 	+ district
- );
+	return db.query('SELECT * from candidates WHERE state = \'' 
+	 	+ state + '\''
+	 	+ ' AND district = ' 
+	 	+ district
+	);
 };
 
 exports.getSenate = function(state){
-	console.log('db.getSenates:', state);
- return db.query('SELECT * from senate WHERE state = \'' 
- 	+ state + '\''
- );
+	return db.query('SELECT * from senate WHERE state = \'' 
+	 	+ state + '\''
+	);
 };

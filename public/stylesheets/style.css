@@ -1,9 +1,29 @@
 body {
-  background:#005fbf;
+   /* fallback */
+  background-color: #005fbf;
+  background: url(images/linear_bg_2.png);
+  background-repeat: repeat-x;
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#005fbf), to(#013B75));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #013B75, #005fbf);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #013B75, #005fbf);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #013B75, #005fbf);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #013B75, #005fbf);
+  
+ /* background:#005fbf;
   background-size: 400px;
   background-repeat: no-repeat;
   background-position:center 90%;
-  background-attachment: fixed;
+  background-attachment: fixed;*/
   padding: 50px;
   font: 14px;
   font-family: 'Lato', sans-serif;

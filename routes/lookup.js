@@ -30,8 +30,9 @@ router.post('/', function(req, res, next) {
 	        var state = resp.results[0].address_components.state;
 	        var districtNumber = resp.results[0].fields.congressional_district.district_number;
 	        console.log('Lookup state/district:', state, '/', districtNumber);
-
-	        // refactor promise chain later
+	        db.logQuery(state, districtNumber)
+	        .then(function(){
+	        	// refactor promise chain later
 	        db.getCandidates(state, districtNumber)
 			.spread(function (rows) {
 				house = [],
@@ -114,6 +115,8 @@ router.post('/', function(req, res, next) {
 				
 				
 			});
+	        });
+	        
         	
 	    })
 	    .catch(function (err) {
