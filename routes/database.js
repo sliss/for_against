@@ -21,3 +21,10 @@ exports.getCandidates = function(state, district){
  	+ district
  );
 };
+
+exports.getSenate = function(state){
+	console.log('db.getSenates:', state);
+ return db.query('SELECT * from senate WHERE state = \'' 
+ 	+ state + '\''
+ );
+};

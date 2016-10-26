@@ -1,5 +1,6 @@
 {
   "mySQLDatabase": "mySQLDatabaseName",
   "mySQLPassword":"myPassword",
-  "geoAPIKey": "myGeoAPIKey"
+  "geoAPIKey": "myGeoAPIKey",
+  "port": 80
 }
