@@ -1,23 +1,23 @@
 body {
    /* fallback */
-  background-color: #005fbf;
+  background-color: #3B9CFF;
   background: url(images/linear_bg_2.png);
   background-repeat: repeat-x;
 
   /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#005fbf), to(#013B75));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3B9CFF), to(#013B75));
 
   /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(top, #013B75, #005fbf);
+  background: -webkit-linear-gradient(top, #013B75, #3B9CFF);
 
   /* Firefox 3.6+ */
-  background: -moz-linear-gradient(top, #013B75, #005fbf);
+  background: -moz-linear-gradient(top, #013B75, #3B9CFF);
 
   /* IE 10 */
-  background: -ms-linear-gradient(top, #013B75, #005fbf);
+  background: -ms-linear-gradient(top, #013B75, #3B9CFF);
 
   /* Opera 11.10+ */
-  background: -o-linear-gradient(top, #013B75, #005fbf);
+  background: -o-linear-gradient(top, #013B75, #3B9CFF);
   
  /* background:#005fbf;
   background-size: 400px;
@@ -31,7 +31,7 @@ body {
 }
 
 a {
-  color: #4EA5D9;
+  color: #89CDF5;
 }
 
 a:hover {

@@ -3,7 +3,9 @@ extends layout
 block content
   h1= title
   if house.length>0
-    p If you approve or disapprove of a candidate's stance on Trump, tweet at them to let them know!
+    p If you approve or disapprove of a candidate's stance on Trump, 
+      b 
+        u tweet at them to let them know!
 
   if senate.length>0
     div.row
@@ -12,7 +14,7 @@ block content
         thead
           td Name
           td Party
-          td Endorses Trump?
+          td Supports Trump?
           td Support
           td Oppose
           td Share
@@ -59,7 +61,7 @@ block content
         thead
           td Name
           td Party
-          td Endorses Trump?
+          td Supports Trump?
           td Support
           td Oppose
           td Share  
